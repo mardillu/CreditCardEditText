@@ -210,6 +210,8 @@ public class CreditCardEntry extends HorizontalScrollView implements
         cardImage.setImageResource(type.frontResource);
         backCardImage.setImageResource(type.backResource);
         updateCardImage(false);
+
+        if (onCardValidCallback != null) onCardValidCallback.cardTypeChanged(type);
     }
 
     @Override
@@ -509,6 +511,8 @@ public class CreditCardEntry extends HorizontalScrollView implements
     public void focusSecurityCode() {
         if (includedFields.contains(securityCodeText)) {
             focusOnField(securityCodeText);
+
+            if (onCardValidCallback != null) onCardValidCallback.CvvStarted();
         }
     }
 
@@ -540,6 +544,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
     private void entryComplete(View clearField) {
         hideKeyboard();
         clearField.clearFocus();
+        if (onCardValidCallback != null) onCardValidCallback.CvvEnded();
         if (onCardValidCallback != null) onCardValidCallback.cardValid(getCreditCard());
     }
 
