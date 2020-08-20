@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.devmarvel.creditcardentry.library.CardType;
 import com.devmarvel.creditcardentry.library.CardValidCallback;
 import com.devmarvel.creditcardentry.library.CreditCard;
 import com.devmarvel.creditcardentry.library.CreditCardForm;
@@ -17,6 +18,21 @@ public class SimpleActivity extends Activity {
 		public void cardValid(CreditCard card) {
 			Log.d(TAG, "valid card: " + card);
 			Toast.makeText(SimpleActivity.this, "Card valid and complete", Toast.LENGTH_SHORT).show();
+		}
+
+		@Override
+		public void CvvStarted() {
+
+		}
+
+		@Override
+		public void CvvEnded() {
+
+		}
+
+		@Override
+		public void cardTypeChanged(CardType type) {
+
 		}
 	};
 
